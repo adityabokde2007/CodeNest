@@ -1,6 +1,6 @@
 <div align="center">
 
-<div>[ CN ]</div>
+<img src="https://img.icons8.com/fluency/96/source-code.png" width="80" alt="CodeNest Logo">
 
 # CodeNest — Personal Code & Picture Vault
 
@@ -91,7 +91,6 @@ Firebase (Authentication + Realtime Database)
 ```text
 .
 ├── public/
-│   ├── forest.jpg
 │   ├── icons.svg
 │   └── ocean.jpg
 ├── src/
@@ -195,7 +194,7 @@ Also enable the Email/Password provider under **Authentication > Sign-in method*
 
 ## Deployment
 
-Build the frontend with `npm run build`, then deploy the generated `dist/` directory to [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/). Add the production Firebase environment variables in the hosting provider’s project settings, and add the production domain to Firebase Authentication’s **Authorised Domains** list.
+Build the frontend with `npm run build`, then deploy the generated `dist/` directory to [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.com/). Add the production Firebase environment variables in the hosting provider's project settings, and add the production domain to Firebase Authentication's **Authorised Domains** list.
 
 <div align="center">
 
