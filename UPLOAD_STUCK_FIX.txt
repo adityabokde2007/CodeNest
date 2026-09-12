@@ -1,0 +1,93 @@
+================================================
+UPLOAD STUCK AT 0% - QUICK FIX
+================================================
+
+Your upload is stuck because Firebase Storage is blocking
+it with CORS (Cross-Origin Resource Sharing) policy.
+
+The upload code is correct - Firebase just needs to be
+configured to allow uploads from localhost.
+
+================================================
+FIX METHOD 1: Use the Batch Script (Easiest)
+================================================
+
+1. Double-click "fix-cors.bat" in this folder
+
+2. Follow the prompts
+
+3. Clear browser cache (Ctrl+Shift+Delete)
+
+4. Try upload again
+
+================================================
+FIX METHOD 2: Manual Commands
+================================================
+
+Open PowerShell and run:
+
+cd "C:\Users\ADMIN\OneDrive\Desktop\codenest"
+gsutil cors set cors.json gs://codenest-63572.appspot.com
+gsutil cors set cors.json gs://codenest-63572.firebasestorage.app
+
+Then clear browser cache and try again.
+
+================================================
+IF "gsutil: command not found"
+================================================
+
+You need to install Google Cloud CLI first:
+
+1. Go to: https://cloud.google.com/sdk/docs/install#windows
+
+2. Download and run the installer
+
+3. Restart PowerShell
+
+4. Run:
+   gcloud auth login
+   gcloud config set project codenest-63572
+
+5. Then run the gsutil commands above
+
+================================================
+VERIFY IT WORKED
+================================================
+
+After running commands, check:
+
+gsutil cors get gs://codenest-63572.appspot.com
+
+Should show JSON with "localhost:5173" in it.
+
+================================================
+CLEAR BROWSER CACHE (REQUIRED!)
+================================================
+
+Browsers cache CORS responses!
+
+Option 1: Ctrl+Shift+Delete → All time → Clear
+Option 2: Test in Incognito (Ctrl+Shift+N)
+Option 3: Hard refresh (Ctrl+Shift+R) x 3
+
+================================================
+WHAT TO EXPECT AFTER FIX
+================================================
+
+Before: Uploading... 0% [stuck forever]
+After:  Uploading... 0% → 50% → 100% ✓
+
+Upload should complete in seconds and image appears.
+
+================================================
+CHECK BROWSER CONSOLE
+================================================
+
+Press F12 and look for errors. You'll probably see:
+
+"blocked by CORS policy: Response to preflight request
+doesn't pass access control check"
+
+This confirms CORS is the issue - follow the fix above.
+
+================================================
