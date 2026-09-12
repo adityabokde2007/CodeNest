@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ref as dbRef, set } from 'firebase/database';
 import { auth, database } from '../lib/firebase';
 import { Code2, Eye, EyeOff } from 'lucide-react';
@@ -53,9 +53,8 @@ const SignupPage = () => {
       await set(dbRef(database, `profiles/${userCredential.user.uid}`), profileData);
       console.log('[Signup] Profile created in database');
 
-      await signOut(auth);
-      showToast('Account created successfully! Redirecting to login...', 'success');
-      navigate('/login', { replace: true });
+      showToast('Account created! Welcome to CodeNest.', 'success');
+      navigate('/dashboard', { replace: true });
     } catch (err: any) {
       console.error('[Signup Error]', err.code, err.message);
       
